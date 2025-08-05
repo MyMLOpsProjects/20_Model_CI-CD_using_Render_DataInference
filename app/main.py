@@ -23,7 +23,7 @@ LIVE_INPUT_FILE = "live_inputs.csv"
 
 # Ensure the CSV file has headers if not present
 if not os.path.exists(LIVE_INPUT_FILE):
-    with open(LIVE_INPUT_FILE, mode="w", newline="") as file:
+    with open(LIVE_INPUT_FILE, mode="a+", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(["sepal_length", "sepal_width", "petal_length", "petal_width"])  # headers
 
