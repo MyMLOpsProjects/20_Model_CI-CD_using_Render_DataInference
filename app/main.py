@@ -26,7 +26,6 @@ if not os.path.exists(LIVE_INPUT_FILE):
         writer = csv.writer(file)
         writer.writerow(["sepal_length", "sepal_width", "petal_length", "petal_width"])  # headers
 
-
 @app.post("/predict")
 async def predict(request: Request, features: IrisFeatures):
     # Convert input features to list
@@ -41,6 +40,8 @@ async def predict(request: Request, features: IrisFeatures):
     with open(LIVE_INPUT_FILE, mode="a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(input_row)
+    
+    print(f"Logged input: {input_row}")  # ✅ This will show in Render logs
 
     # Make prediction
     prediction = model.predict([input_row])
