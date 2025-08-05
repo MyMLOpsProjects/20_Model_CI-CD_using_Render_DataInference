@@ -25,7 +25,7 @@ git add live_inputs.csv
 
 # 7. Commit only if there are changes
 if ! git diff-index --quiet HEAD --; then
-    git commit -m "Update live_inputs.csv"
+    git commit -m "Update live_inputs.csv on $(date '+%Y-%m-%d %H:%M:%S')"
     git push origin live-data-branch
     echo "✅ live_inputs.csv pushed"
 else
