@@ -5,6 +5,7 @@ import joblib
 import os
 import csv
 import pandas as pd
+import subprocess
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -42,7 +43,14 @@ async def predict(request: Request, features: IrisFeatures):
         writer.writerow(input_row)
     
     print(f"Logged input: {input_row}")  # ✅ This will show in Render logs
-
+    
+    # Trigger the shell script
+    try:
+        subprocess.run(["bash", "push_live_inputs.sh"], check=True)
+        print("✅ push_live_inputs.sh triggered successfully")
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Error triggering push_live_inputs.sh: {e}")
+    
     # Make prediction
     prediction = model.predict([input_row])
 
