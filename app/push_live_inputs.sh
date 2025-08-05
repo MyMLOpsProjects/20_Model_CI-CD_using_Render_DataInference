@@ -7,7 +7,7 @@ echo "Current directory is: $(pwd)"
 # 2. Initialize git if not already a repo
 if [ ! -d .git ]; then
     git init
-    git remote add origin https://$RENDER_GITHUB_TOKEN@github.com/MyMLOpsProjects/20_Model_CI-CD_using_Render_DataInference.git
+    git remote add origin https://$GITHUB_PAT@github.com/MyMLOpsProjects/20_Model_CI-CD_using_Render_DataInference.git
 fi
 
 # 3. Set Git identity (for committing)
@@ -38,4 +38,4 @@ fi
 # cp /live_inputs.csv ./drift-data/live_inputs.csv
 # git add ./drift-data/live_inputs.csv
 # git commit -m "Sync live inputs: $(date +'%Y-%m-%d %H:%M:%S')"
-# git push https://$RENDER_GITHUB_TOKEN@github.com/MyMLOpsProjects/20_Model_CI-CD_using_Render_DataInference.git
+# git push https://$GITHUB_PAT@github.com/MyMLOpsProjects/20_Model_CI-CD_using_Render_DataInference.git
