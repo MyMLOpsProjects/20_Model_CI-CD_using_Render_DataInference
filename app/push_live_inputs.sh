@@ -1,5 +1,8 @@
 #!/bin/bash
-cd ./app || exit
+echo "Current directory is: $(pwd)"
+# cd ./app || exit
+# or
+# cd /opt/render/project/src || exit # Commonly used dir by render
 
 # 2. Initialize git if not already a repo
 if [ ! -d .git ]; then
