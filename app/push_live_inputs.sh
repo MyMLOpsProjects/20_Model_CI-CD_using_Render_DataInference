@@ -2,7 +2,7 @@
 echo "📂 Current directory: $(pwd)"
 
 # Navigate to Render working directory if needed
-# cd /opt/render/project/src || exit
+# cd /opt/render/project/src || exit 
 
 # 1. Initialize git if not already a repo
 if [ ! -d .git ]; then
