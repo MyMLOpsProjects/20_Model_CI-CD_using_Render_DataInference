@@ -11,36 +11,41 @@ if [ ! -f live_inputs.csv ]; then
     exit 0
 fi
 
-# Initialize git if not already a repo (for the first run in a fresh environment)
+# Define variables
+BRANCH_NAME="live-data-branch"
+REPO_URL="https://$GITHUB_PAT@github.com/MyMLOpsProjects/20_Model_CI-CD_using_Render_DataInference.git"
+
+# Initialize git if not already a repo
 if [ ! -d .git ]; then
     echo "🤔 .git directory not found. Initializing a new repository..."
     git init
-    
-    # Set Git identity immediately after init
+
+    # Set Git identity BEFORE first commit
     git config user.email "pycsrbypankaj@gmail.com"
     git config user.name "pycsr"
-    
-    git remote add origin https://$GITHUB_PAT@github.com/MyMLOpsProjects/20_Model_CI-CD_using_Render_DataInference.git
 
-    # Create an empty initial commit so that commands like 'stash' can work.
+    git remote add origin $REPO_URL
+
+    # Create an empty initial commit to enable stash
     git commit --allow-empty -m "Initial commit for CI environment setup"
 fi
 
-# Set Git identity for the commit
+# Ensure Git identity is set in case repo already existed
 git config user.email "pycsrbypankaj@gmail.com"
 git config user.name "pycsr"
 
-# Add the new/modified live_inputs.csv to the staging area
+# Stage the CSV file
 git add live_inputs.csv
 
-# Stash changes so we can safely switch branches
-echo "🗄️ Stashing new live_inputs.csv to switch branches safely."
-git stash
+# Check if initial commit exists, then stash
+if git rev-parse --verify HEAD > /dev/null 2>&1; then
+    echo "🗄️ Stashing new live_inputs.csv to switch branches safely."
+    git stash
+else
+    echo "⚠️ No commits found yet. Skipping stash."
+fi
 
-# Define branch name
-BRANCH_NAME="live-data-branch"
-
-# Fetch remote references
+# Fetch latest remote refs
 git fetch origin
 
 # Check if remote branch exists
@@ -54,11 +59,11 @@ else
     git switch -c $BRANCH_NAME
 fi
 
-# Re-apply stashed changes
+# Apply stashed changes (if any)
 echo "🍾 Applying stashed changes..."
-git stash pop || true  # Don't fail if there's nothing to pop
+git stash pop || echo "ℹ️ Nothing to pop from stash."
 
-# Stage the file again
+# Stage final version of the CSV
 git add live_inputs.csv
 
 # Commit only if there are actual changes
@@ -66,6 +71,7 @@ if ! git diff-index --quiet HEAD --; then
     echo "📝 Changes detected. Committing..."
     git commit -m "Update live_inputs.csv on $(date '+%Y-%m-%d %H:%M:%S')"
 
+    # Push to remote branch
     echo "🚀 Pushing to origin..."
     git push -u origin $BRANCH_NAME
     echo "✅ live_inputs.csv pushed successfully!"
