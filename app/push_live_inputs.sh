@@ -15,6 +15,11 @@ fi
 if [ ! -d .git ]; then
     echo "🤔 .git directory not found. Initializing a new repository..."
     git init
+    
+    # Set Git identity immediately after init
+    git config user.email "pycsrbypankaj@gmail.com"
+    git config user.name "pycsr"
+    
     git remote add origin https://$GITHUB_PAT@github.com/MyMLOpsProjects/20_Model_CI-CD_using_Render_DataInference.git
 
     # Create an empty initial commit so that commands like 'stash' can work.
