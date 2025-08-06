@@ -34,6 +34,19 @@ fi
 git config user.email "pycsrbypankaj@gmail.com"
 git config user.name "pycsr"
 
+# Clean merge markers from existing file, if present
+if [ -f live_inputs.csv ]; then
+    echo "🧹 Cleaning merge markers from live_inputs.csv (if any)..."
+    sed -i '/^<<<<<<< /d;/^=======/d;/^>>>>>>> /d' live_inputs.csv
+else
+    echo "📄 live_inputs.csv not found. Creating a new file with headers."
+    echo "sepal_length,sepal_width,petal_length,petal_width" > live_inputs.csv
+fi
+
+# Append the new row
+echo "➕ Appending new input row: $INPUT_ROW"
+echo "$INPUT_ROW" >> live_inputs.csv
+
 # Stage the CSV file
 git add live_inputs.csv
 
