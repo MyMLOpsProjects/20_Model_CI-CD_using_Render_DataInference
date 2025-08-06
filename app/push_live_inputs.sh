@@ -37,11 +37,13 @@ git config user.name "pycsr"
 # Clean merge markers from existing file, if present
 if [ -f live_inputs.csv ]; then
     echo "🧹 Cleaning merge markers from live_inputs.csv (if any)..."
-    sed -i '/^<<<<<<< /d;/^=======/d;/^>>>>>>> /d' live_inputs.csv
+    # Remove any lines containing merge conflict markers, regardless of position
+    sed -i '/<<<<<<<\|=======\|>>>>>>>/d' live_inputs.csv
 else
     echo "📄 live_inputs.csv not found. Creating a new file with headers."
     echo "sepal_length,sepal_width,petal_length,petal_width" > live_inputs.csv
 fi
+
 
 # Append the new row
 echo "➕ Appending new input row: $INPUT_ROW"
