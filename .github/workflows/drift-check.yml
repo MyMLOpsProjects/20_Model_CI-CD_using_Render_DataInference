@@ -54,4 +54,4 @@ jobs:
     steps:
     - name: Start FastAPI App (CD)
       run: |
-        echo "Hello"
+        echo "Hello "
