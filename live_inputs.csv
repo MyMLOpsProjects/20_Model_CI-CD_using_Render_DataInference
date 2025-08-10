@@ -39,5 +39,11 @@ sepal_length,sepal_width,petal_length,petal_width
 10.0,8.0,6.0,5.0
 
 10.0,8.0,6.0,5.0
+<<<<<<< Updated upstream
 5.0,4.0,3.0,2.0
 
+=======
+
+100.0,80.0,60.0,50.0
+
+>>>>>>> Stashed changes
