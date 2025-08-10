@@ -1,44 +1,57 @@
-name: Drift Check
+# name: Drift Check
 
+# on:
+#   push:
+#     branches:
+#       - live-data-branch
+#     paths:
+#       - live_inputs.csv
+
+# jobs:
+#   drift:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # - name: Checkout live-data-branch (default)
+#       #   uses: actions/checkout@v3
+#       #   with:
+#       #     ref: live-data-branch
+
+#       # - name: Fetch ref_data.csv from main branch
+#       #   run: |
+#       #     git fetch origin main:main
+#       #     git checkout main -- ref-data/ref_data.csv
+
+#       # - name: List files for debugging
+#       #   run: ls -R
+
+#       # - name: Set up Python
+#       #   uses: actions/setup-python@v4
+#       #   with:
+#       #     python-version: 3.10
+
+#       # - name: Install dependencies
+#       #   run: |
+#       #     pip install --upgrade pip
+#       #     pip install pandas scikit-learn deepchecks
+
+#       # - name: Run Drift Check
+#       #   run: |
+#       #     python drift_check.py
+
+#       - name: test
+#         run: |
+#           ls -al
+
+name: Test
 on:
   push:
-    branches:
-      - live-data-branch
-    paths:
-      - live_inputs.csv
+    branches: [main]
 
 jobs:
-  drift:
+  ci-cd:
     runs-on: ubuntu-latest
-
     steps:
-      # - name: Checkout live-data-branch (default)
-      #   uses: actions/checkout@v3
-      #   with:
-      #     ref: live-data-branch
-
-      # - name: Fetch ref_data.csv from main branch
-      #   run: |
-      #     git fetch origin main:main
-      #     git checkout main -- ref-data/ref_data.csv
-
-      # - name: List files for debugging
-      #   run: ls -R
-
-      # - name: Set up Python
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: 3.10
-
-      # - name: Install dependencies
-      #   run: |
-      #     pip install --upgrade pip
-      #     pip install pandas scikit-learn deepchecks
-
-      # - name: Run Drift Check
-      #   run: |
-      #     python drift_check.py
-
-      - name: test
-        run: |
-          ls -al
+    - name: Start FastAPI App (CD)
+      run: |
+        echo "Hello"
