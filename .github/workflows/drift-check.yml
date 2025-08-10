@@ -46,7 +46,7 @@
 name: Test
 on:
   push:
-    branches: [live-data-branch]
+    branches: [main]
 
 jobs:
   ci-cd:
