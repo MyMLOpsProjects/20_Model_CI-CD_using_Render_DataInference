@@ -1,40 +1,41 @@
-name: Drift Check
+name: Model Drift Check on Live Data Updates
 
 on:
   push:
     branches:
       - live-data-branch
-    paths:
-      - live_inputs.csv
 
 jobs:
-  drift:
+  trigger-from-main:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout live-data-branch (default)
+      - name: Checkout main branch
         uses: actions/checkout@v3
         with:
-          ref: live-data-branch
-
-      - name: Fetch ref_data.csv from main branch
-        run: |
-          git fetch origin main:main
-          git checkout main -- ref-data/ref_data.csv
-
-      - name: List files for debugging
-        run: ls -R
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
-          pip install --upgrade pip
-          pip install pandas scikit-learn deepchecks
+          python -m pip install --upgrade pip
+          pip install deepchecks pandas scikit-learn
 
-      - name: Run Drift Check
+      - name: Load latest live data
+        run: |
+          echo "📥 Copying latest live data from live-data-branch..."
+          git fetch origin live-data-branch
+          git checkout origin/live-data-branch -- live_inputs.csv
+
+      - name: Drift Check
         run: |
           python drift_check.py
+          
+      - name: Upload Drift Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: drift-report
+          path: drift_report.html
