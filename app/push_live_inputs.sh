@@ -41,7 +41,7 @@ if [ -f live_inputs.csv ]; then
     sed -i '/<<<<<<<\|=======\|>>>>>>>/d' live_inputs.csv
 else
     echo "📄 live_inputs.csv not found. Creating a new file with headers."
-    echo "sepal_length,sepal_width,petal_length,petal_width" > live_inputs.csv
+    echo "SepalLength,SepalWidth,PetalLength,PetalWidth" > live_inputs.csv
 fi
 
 

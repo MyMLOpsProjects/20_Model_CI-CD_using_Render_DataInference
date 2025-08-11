@@ -6,9 +6,6 @@ from deepchecks.tabular.checks import FeatureDrift  # Use new class instead of d
 ref = pd.read_csv('ref-data/ref_data.csv')
 live = pd.read_csv('live_inputs.csv')
 
-# Align columns
-live = live[ref.columns]  # Reorder and drop extra columns
-
 # Define label (if you have one)
 label_col = None  # e.g., 'species'
 
