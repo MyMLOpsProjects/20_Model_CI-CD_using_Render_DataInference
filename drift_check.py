@@ -2,7 +2,6 @@ import pandas as pd
 from deepchecks.tabular import Dataset
 import numpy as np
 from deepchecks.tabular.checks import TrainTestDrift
-np.Inf = np.inf # because deepcheck is not able to handle np.Inf, hence np.inf
 
 ref = pd.read_csv('ref-data/ref_data.csv')
 live = pd.read_csv('live_inputs.csv')
