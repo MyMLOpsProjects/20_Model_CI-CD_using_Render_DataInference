@@ -6,7 +6,7 @@ ref = pd.read_csv('ref-data/ref_data.csv')
 live = pd.read_csv('live_inputs.csv')
 
 ref_ds = Dataset(ref,label="Name")
-live_ds = Dataset(live,label="Name")
+live_ds = Dataset(live)
 
 check = TrainTestFeatureDrift()
 result = check.run(ref_ds, live_ds)
