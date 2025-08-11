@@ -1,0 +1,6 @@
+pandas
+scikit-learn
+joblib
+pytest
+numpy==1.24.4
+deepchecks==0.19.1
