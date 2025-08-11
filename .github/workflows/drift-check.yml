@@ -36,7 +36,7 @@ jobs:
           python drift_check.py
           
       - name: Upload Drift Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: drift-report
           path: drift_report.html
