@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 SepalLength,SepalWidth,PetalLength,PetalWidth
 10.0,8.0,6.0,5.0
 10.0,8.0,6.0,5.0
@@ -50,3 +51,8 @@ SepalLength,SepalWidth,PetalLength,PetalWidth
 0.0,0.0,0.0,0.0
 
 
+=======
+sepal_length,sepal_width,petal_length,petal_width
+0.0,0.0,0.0,0.0
+
+>>>>>>> Stashed changes
