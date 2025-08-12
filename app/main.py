@@ -14,10 +14,10 @@ app = FastAPI()
 model = joblib.load("models/iris_model.pkl")
 
 class IrisFeatures(BaseModel):
-    sepal_length: float
-    sepal_width: float
-    petal_length: float
-    petal_width: float
+    SepalLength: float
+    SepalWidth: float
+    PetalLength: float
+    PetalWidth: float
 
 LIVE_INPUT_FILE = "live_inputs.csv"
 
@@ -31,10 +31,10 @@ if not os.path.exists(LIVE_INPUT_FILE):
 async def predict(request: Request, features: IrisFeatures):
     # Convert input features to list
     input_row = [
-        features.sepal_length,
-        features.sepal_width,
-        features.petal_length,
-        features.petal_width
+        features.SepalLength,
+        features.SepalWidth,
+        features.PetalLength,
+        features.PetalWidth
     ]
 
     # Append to live_inputs.csv
@@ -56,10 +56,10 @@ async def predict(request: Request, features: IrisFeatures):
 
     return {
         "input": {
-            "sepal_length": features.sepal_length,
-            "sepal_width": features.sepal_width,
-            "petal_length": features.petal_length,
-            "petal_width": features.petal_width,
+            "SepalLength": features.SepalLength,
+            "SepalWidth": features.SepalWidth,
+            "PetalLength": features.PetalLength,
+            "PetalWidth": features.PetalWidth,
         },
         "prediction": prediction[0]
     }
