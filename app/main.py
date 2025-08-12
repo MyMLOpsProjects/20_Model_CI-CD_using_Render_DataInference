@@ -25,7 +25,7 @@ LIVE_INPUT_FILE = "live_inputs.csv"
 if not os.path.exists(LIVE_INPUT_FILE):
     with open(LIVE_INPUT_FILE, mode="a", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(["sepal_length", "sepal_width", "petal_length", "petal_width"])  # headers
+        writer.writerow(["SepalLength","SepalWidth","PetalLength","PetalWidth"])  # headers
 
 @app.post("/predict")
 async def predict(request: Request, features: IrisFeatures):

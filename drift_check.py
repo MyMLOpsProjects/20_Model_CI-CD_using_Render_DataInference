@@ -17,7 +17,7 @@ for line in lines:
     if line.startswith(("<<<<<<<", "=======", ">>>>>>>")):
         continue
     # Remove duplicate headers
-    if re.match(r"^\s*sepal_length", line):
+    if re.match(r"^\s*SepalLength", line):
         if seen_header:
             continue
         seen_header = True
