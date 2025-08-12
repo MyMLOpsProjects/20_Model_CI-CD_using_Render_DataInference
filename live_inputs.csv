@@ -1,6 +1,9 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 SepalLength,SepalWidth,PetalLength,PetalWidth
@@ -54,26 +57,40 @@ SepalLength,SepalWidth,PetalLength,PetalWidth
 
 0.0,0.0,0.0,0.0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 0.0,0.0,0.0,0.0
 
-=======
 SepalLength,SepalWidth,PetalLength,PetalWidth
 0.0,0.0,0.0,0.0
+SepalLength,SepalWidth,PetalLength,PetalWidth
+0.0,0.0,0.0,0.0
+
+
+
+
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 =======
 SepalLength,SepalWidth,PetalLength,PetalWidth
 0.0,0.0,0.0,0.0
 
 
 >>>>>>> Stashed changes
-
->>>>>>> Stashed changes
-
-
 =======
->>>>>>> Stashed changes
-=======
+
+
+
+sepal_length,sepal_width,petal_length,petal_width
+0.0,0.0,0.0,0.0
+
+0.0,0.0,0.0,0.0
+
 SepalLength,SepalWidth,PetalLength,PetalWidth
 0.0,0.0,0.0,0.0
 
+20.0,20.0,30.0,30.0
 
 >>>>>>> Stashed changes
