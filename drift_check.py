@@ -1,6 +1,16 @@
 import pandas as pd
 from deepchecks.tabular.checks import TrainTestFeatureDrift
 from deepchecks.tabular import Dataset
+import re
+
+def clean_csv(file_path):
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+    clean_lines = [line for line in lines if not re.match(r'^(<<<<<<<|=======|>>>>>>>)', line)]
+    with open(file_path, 'w') as f:
+        f.writelines(clean_lines)
+
+clean_csv('live_inputs.csv')        
 
 # Load datasets
 ref = pd.read_csv('ref-data/ref_data.csv')
