@@ -83,14 +83,12 @@ SepalLength,SepalWidth,PetalLength,PetalWidth
 
 
 
-sepal_length,sepal_width,petal_length,petal_width
-0.0,0.0,0.0,0.0
-
 0.0,0.0,0.0,0.0
 
 SepalLength,SepalWidth,PetalLength,PetalWidth
 0.0,0.0,0.0,0.0
 
 20.0,20.0,30.0,30.0
+
 
 >>>>>>> Stashed changes
