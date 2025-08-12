@@ -7,7 +7,7 @@ ref = pd.read_csv('ref-data/ref_data.csv')
 live = pd.read_csv('live_inputs.csv')
 
 # Create Dataset objects
-train_ds = Dataset(ref)
+train_ds = Dataset(ref.iloc[:-1])
 test_ds = Dataset(live)
 
 check = TrainTestFeatureDrift()
